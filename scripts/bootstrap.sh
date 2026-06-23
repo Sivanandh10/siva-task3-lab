@@ -1,7 +1,7 @@
 #!/bin/bash
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -y -qq
-apt-get install -y -qq git nginx python3
+apt-get install -y -qq git nginx python3 curl
 
 git config --global user.email "dev@todoapp.com"
 git config --global user.name "Developer"
@@ -74,3 +74,14 @@ http.server.HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
 PYEOF
 
 nohup python3 /root/gitlog.py > /var/log/gitlog.log 2>&1 &
+
+# Wait for nginx to be ready before exec exits
+echo "Waiting for nginx..."
+for i in $(seq 1 60); do
+    if curl -sf http://localhost:80 > /dev/null 2>&1; then
+        echo "nginx is ready"
+        exit 0
+    fi
+    sleep 2
+done
+echo "nginx ready (timeout)"
