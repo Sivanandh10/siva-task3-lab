@@ -1,30 +1,26 @@
 # Merging
 
-> Merge your feature branch back into the default branch.
+> Bring your feature work back into main so the live site gets the update.
 
 ---
 
-## Step 1 - Add a commit on feature
+## Step 1 - Switch back to main
 
-Make sure you are on feature:
+    git checkout main
 
-    git checkout feature
-    echo "feature work" > feature.txt
-    git add feature.txt
-    git commit -m "add feature work"
+Check the **Live Site** tab — it reverts to "Hello from main branch!" — main hasn't been updated yet.
 
 ---
 
-## Step 2 - Merge into master
+## Step 2 - Merge feature into main
 
-    git checkout master
     git merge feature
+
+Check the **Live Site** tab again — it now shows "Hello from feature branch!" — the merge worked!
 
 Verify:
 
     git log --oneline
-
-You should see both commits.
 
 Click **Check**.
 

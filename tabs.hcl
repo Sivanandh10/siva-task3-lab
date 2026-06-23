@@ -9,3 +9,9 @@ resource "editor" "code" {
     target    = resource.container.workstation
   }
 }
+
+resource "service" "website" {
+  target = resource.container.workstation
+  port   = 80
+  path   = "/"
+}

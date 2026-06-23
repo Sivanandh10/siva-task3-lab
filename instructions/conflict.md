@@ -1,33 +1,52 @@
 # Resolve Conflicts
 
-> Conflicts happen when two branches change the same line.
+> When two branches edit the same line, Git asks you to choose which version to keep.
 
 ---
 
-## Step 1 - Create the conflict
+## Step 1 - Create a conflict
 
-    git checkout master
-    echo "master version" > README.md
-    git add README.md
-    git commit -m "update readme on master"
+    git checkout main
+    sed -i 's/feature branch/main branch v2/' index.html
+    git add index.html
+    git commit -m "update heading on main"
 
     git checkout feature
-    echo "feature version" > README.md
-    git add README.md
-    git commit -m "update readme on feature"
+    sed -i 's/feature branch/feature branch v2/' index.html
+    git add index.html
+    git commit -m "update heading on feature"
 
 ---
 
-## Step 2 - Trigger and resolve
+## Step 2 - Trigger the conflict
 
-    git checkout master
+    git checkout main
     git merge feature
 
-Git reports a conflict. Resolve it:
+Git reports a conflict in `index.html`. Open **Project Files** to see the conflict markers.
 
-    echo "resolved version" > README.md
-    git add README.md
+---
+
+## Step 3 - Resolve it
+
+Edit `index.html` in **Project Files** — remove the conflict markers and set the heading to:
+
+    <h1>Resolved: Git Fundamentals Complete!</h1>
+
+Or run:
+
+    cat > index.html << 'EOF'
+    <!DOCTYPE html>
+    <html>
+    <head><title>My Git Project</title></head>
+    <body><h1>Resolved: Git Fundamentals Complete!</h1></body>
+    </html>
+    EOF
+
+    git add index.html
     git commit -m "resolve merge conflict"
+
+Check the **Live Site** tab — the final resolved page is live!
 
 Click **Check** to complete the workshop.
 

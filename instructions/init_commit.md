@@ -1,6 +1,6 @@
 # Init and Commit
 
-> Every Git project starts with `git init` and a first commit.
+> Start your Git project and create the first page of your website.
 
 ---
 
@@ -11,15 +11,25 @@
 
 ---
 
-## Step 2 - Create a file and stage it
+## Step 2 - Create your homepage
 
-    echo "# My Git Project" > README.md
-    git add README.md
+Use the **Project Files** tab to create a new file called `index.html`, or run:
+
+    cat > index.html << 'EOF'
+    <!DOCTYPE html>
+    <html>
+    <head><title>My Git Project</title></head>
+    <body><h1>Hello from main branch!</h1></body>
+    </html>
+    EOF
+
+Check the **Live Site** tab — your page is live!
 
 ---
 
-## Step 3 - Make your first commit
+## Step 3 - Commit it
 
+    git add index.html
     git commit -m "initial commit"
 
 Verify:

@@ -14,5 +14,9 @@ resource "layout" "two_column" {
       title  = "Project Files"
       target = resource.editor.code
     }
+    tab "website" {
+      title  = "Live Site"
+      target = resource.service.website
+    }
   }
 }
