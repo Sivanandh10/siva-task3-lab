@@ -7,6 +7,9 @@ resource "task" "pull_run" {
 
   condition "hello_world" {
     description = "Run the hello-world container"
+    setup {
+      script = "scripts/setup.sh"
+    }
     check {
       script = "scripts/check_hello.sh"
     }
