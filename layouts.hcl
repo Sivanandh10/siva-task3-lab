@@ -11,12 +11,16 @@ resource "layout" "two_column" {
       active = true
     }
     tab "editor" {
-      title  = "Project Files"
+      title  = "Code Editor"
       target = resource.editor.code
     }
-    tab "website" {
-      title  = "Live Site"
-      target = resource.service.website
+    tab "liveapp" {
+      title  = "Live App"
+      target = resource.service.liveapp
+    }
+    tab "gitlog" {
+      title  = "Git History"
+      target = resource.service.gitlog
     }
   }
 }

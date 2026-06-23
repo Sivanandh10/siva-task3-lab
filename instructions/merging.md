@@ -1,6 +1,6 @@
 # Merging
 
-> Bring your feature work back into main so the live site gets the update.
+> The feature is ready. Merge it into main so the production version gets the update.
 
 ---
 
@@ -8,7 +8,7 @@
 
     git checkout main
 
-Check the **Live Site** tab — it reverts to "Hello from main branch!" — main hasn't been updated yet.
+Open the **Live App** tab — it shows "Coming soon..." again. Main hasn't been updated yet.
 
 ---
 
@@ -16,11 +16,13 @@ Check the **Live Site** tab — it reverts to "Hello from main branch!" — main
 
     git merge feature
 
-Check the **Live Site** tab again — it now shows "Hello from feature branch!" — the merge worked!
+Open the **Live App** tab — the full working todo app is now live on main!
 
 Verify:
 
     git log --oneline
+
+Check **Git History** — you can see both commits on main now.
 
 Click **Check**.
 

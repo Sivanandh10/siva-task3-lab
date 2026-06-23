@@ -1,25 +1,29 @@
-# Welcome to Git Fundamentals
+# Build a Todo App with Git
 
-> **Git** is the version control system used by every software team in the world. This workshop teaches you Git while building a real website you can preview live.
-
----
-
-## Your tabs
-
-| Tab | Purpose |
-|-----|---------|
-| **Terminal** | Run all Git commands |
-| **Project Files** | Edit your website files visually |
-| **Live Site** | Preview your website in real time |
+> You are a developer building a real Todo application. Every feature you add gets tracked with Git — just like on a real dev team.
 
 ---
 
-## Your environment
+## Your workspace
 
-Ubuntu 22.04 with Git and nginx pre-installed. Your project folder is served live at the **Live Site** tab.
+| Tab | What it does |
+|-----|-------------|
+| **Terminal** | Run Git commands and edit files |
+| **Code Editor** | Write and edit your app files visually |
+| **Live App** | See your Todo app running live in the browser |
+| **Git History** | Watch your commit history grow in real time |
 
-Verify Git is ready:
+---
 
-    git --version
+## The project
 
-Click **Next page** to start building.
+You will build a working Todo app step by step:
+
+- **Step 1** — Create the app skeleton and make your first commit
+- **Step 2** — Add todo functionality on a feature branch, see it live
+- **Step 3** — Merge the feature into main, app is fully live
+- **Step 4** — Add styling, hit a conflict, resolve it like a pro
+
+Open the **Live App** tab now — it will show your app as you build it.
+
+Click **Next page** to start.

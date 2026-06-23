@@ -12,4 +12,7 @@ resource "container" "workstation" {
   port {
     local = 80
   }
+  port {
+    local = 8080
+  }
 }

@@ -1,5 +1,5 @@
 resource "page" "overview" {
-  title = "Welcome to Git"
+  title = "Welcome"
   file  = "instructions/overview.md"
 }
 
@@ -12,7 +12,7 @@ resource "page" "init_commit" {
 }
 
 resource "page" "branching" {
-  title = "Branching"
+  title = "Feature Branch"
   file  = "instructions/branching.md"
   activities = {
     branching = resource.task.branching
@@ -28,7 +28,7 @@ resource "page" "merging" {
 }
 
 resource "page" "conflict" {
-  title = "Resolve Conflicts"
+  title = "Style and Resolve"
   file  = "instructions/conflict.md"
   activities = {
     conflict = resource.task.conflict

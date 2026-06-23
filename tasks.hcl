@@ -1,12 +1,12 @@
 resource "task" "init_commit" {
-  description = "Initialise a repo and make your first commit"
+  description = "Initialise the repo and create the app skeleton"
 
   config {
     target = resource.container.workstation
   }
 
   condition "repo_init" {
-    description = "Initialise a Git repo in /root/gitproject"
+    description = "Initialise a Git repo in /root/todoapp"
     setup {
       script = "scripts/setup.sh"
     }
@@ -16,7 +16,7 @@ resource "task" "init_commit" {
   }
 
   condition "first_commit" {
-    description = "Make a commit with the message 'initial commit'"
+    description = "Commit the skeleton with message 'initial commit'"
     check {
       script = "scripts/check_commit.sh"
     }
@@ -24,7 +24,7 @@ resource "task" "init_commit" {
 }
 
 resource "task" "branching" {
-  description = "Create and switch to a new branch"
+  description = "Add todo functionality on a feature branch"
 
   config {
     target = resource.container.workstation
@@ -46,14 +46,14 @@ resource "task" "branching" {
 }
 
 resource "task" "merging" {
-  description = "Merge the feature branch back to main"
+  description = "Merge the todo feature into main"
 
   config {
     target = resource.container.workstation
   }
 
   condition "feature_commit" {
-    description = "Add a commit on the feature branch"
+    description = "Add the full todo functionality on feature branch"
     check {
       script = "scripts/check_feature_commit.sh"
     }
@@ -68,15 +68,15 @@ resource "task" "merging" {
 }
 
 resource "task" "conflict" {
-  description     = "Resolve a merge conflict"
-  success_message = "Outstanding. You have completed the Git Fundamentals workshop."
+  description     = "Style the app and resolve the conflict"
+  success_message = "Outstanding! Your Todo App is complete and deployed with Git!"
 
   config {
     target = resource.container.workstation
   }
 
   condition "conflict_resolved" {
-    description = "Resolve the conflict and commit the result"
+    description = "Resolve the style conflict and commit the final app"
     check {
       script = "scripts/check_conflict.sh"
     }

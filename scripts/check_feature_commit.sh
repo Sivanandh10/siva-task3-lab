@@ -1,2 +1,2 @@
 #!/bin/bash
-cd /root/gitproject && git log feature --oneline 2>/dev/null | wc -l | xargs -I{} test {} -ge 2
+cd /root/todoapp && count=$(git log feature --oneline 2>/dev/null | wc -l); [ $count -ge 2 ]

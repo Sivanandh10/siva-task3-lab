@@ -1,6 +1,6 @@
 resource "lab" "siva_task3_lab" {
-  title       = "Git Fundamentals"
-  description = "Learn Git hands-on — init, commit, branch, merge, and resolve conflicts."
+  title       = "Build a Todo App with Git"
+  description = "Learn Git by building and versioning a real working Todo application."
   layout      = resource.layout.two_column
 
   settings {

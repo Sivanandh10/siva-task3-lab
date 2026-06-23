@@ -1,10 +1,10 @@
-# Branching
+# Feature Branch
 
-> Create a feature branch to safely develop a new version of the site.
+> Real teams never code directly on main. Create a feature branch and build the todo functionality there.
 
 ---
 
-## Step 1 - Create and switch to a feature branch
+## Step 1 - Create and switch to the feature branch
 
     git branch feature
     git checkout feature
@@ -13,22 +13,59 @@ Verify:
 
     git branch
 
+The `*` should be next to `feature`. Check **Git History** — the branch appears!
+
 ---
 
-## Step 2 - Update the site on the feature branch
+## Step 2 - Add the todo functionality
 
-Edit `index.html` in the **Project Files** tab — change the `<h1>` to:
+Replace `index.html` with the full working app:
 
-    <h1>Hello from feature branch!</h1>
+    cat > index.html << 'EOF'
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>My Todo App</title>
+      <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <div class="app">
+        <h1>📝 My Todo App</h1>
+        <div class="input-row">
+          <input type="text" id="todoInput" placeholder="Add a new task..." />
+          <button onclick="addTodo()">Add</button>
+        </div>
+        <ul id="todoList"></ul>
+      </div>
+      <script>
+        function addTodo() {
+          const input = document.getElementById('todoInput');
+          const text = input.value.trim();
+          if (!text) return;
+          const li = document.createElement('li');
+          li.innerHTML = '<span onclick="this.parentElement.classList.toggle(\'done\')">' + text + '</span><button onclick="this.parentElement.remove()">✕</button>';
+          document.getElementById('todoList').appendChild(li);
+          input.value = '';
+        }
+        document.getElementById('todoInput').addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') addTodo();
+        });
+      </script>
+    </body>
+    </html>
+    EOF
 
-Or run:
+Open the **Live App** tab — the full todo app is live! Try adding tasks, clicking to complete them, deleting them.
 
-    sed -i 's/main branch/feature branch/' index.html
+---
 
-Check the **Live Site** tab — it now shows the feature branch version!
+## Step 3 - Commit on the feature branch
 
     git add index.html
-    git commit -m "update heading for feature"
+    git commit -m "add todo functionality"
+
+Check **Git History** — the new commit appears on the `feature` branch!
 
 Click **Check**.
 

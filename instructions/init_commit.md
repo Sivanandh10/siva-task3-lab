@@ -1,38 +1,52 @@
 # Init and Commit
 
-> Start your Git project and create the first page of your website.
+> Every project starts with `git init`. Let's create the app skeleton and see it live.
 
 ---
 
-## Step 1 - Initialise the repository
+## Step 1 - Initialise the repo
 
-    cd /root/gitproject
+    cd /root/todoapp
     git init
 
 ---
 
-## Step 2 - Create your homepage
-
-Use the **Project Files** tab to create a new file called `index.html`, or run:
+## Step 2 - Create the skeleton
 
     cat > index.html << 'EOF'
     <!DOCTYPE html>
     <html>
-    <head><title>My Git Project</title></head>
-    <body><h1>Hello from main branch!</h1></body>
+    <head>
+      <meta charset="UTF-8">
+      <title>My Todo App</title>
+      <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <div class="app">
+        <h1>📝 My Todo App</h1>
+        <p>Coming soon...</p>
+      </div>
+    </body>
     </html>
     EOF
 
-Check the **Live Site** tab — your page is live!
+    cat > style.css << 'EOF'
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 40px 20px; }
+    .app { background: white; border-radius: 12px; padding: 32px; width: 100%; max-width: 480px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    h1 { font-size: 24px; margin-bottom: 16px; color: #333; }
+    EOF
+
+Open the **Live App** tab — you should see "My Todo App" with "Coming soon..."
 
 ---
 
-## Step 3 - Commit it
+## Step 3 - Commit the skeleton
 
-    git add index.html
+    git add index.html style.css
     git commit -m "initial commit"
 
-Verify:
+Open the **Git History** tab — click Refresh to see your first commit appear!
 
     git log --oneline
 

@@ -1,2 +1,2 @@
 #!/bin/bash
-test -d /root/gitproject/.git
+test -d /root/todoapp/.git
