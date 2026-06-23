@@ -1,2 +1,2 @@
 #!/bin/sh
-docker ps --format '{{.Image}}' | grep -q 'nginx'
+docker ps | grep -q nginx
