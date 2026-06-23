@@ -16,3 +16,8 @@ resource "container" "workstation" {
     local = 8080
   }
 }
+
+resource "exec" "bootstrap" {
+  target = resource.container.workstation
+  script = "scripts/bootstrap.sh"
+}
