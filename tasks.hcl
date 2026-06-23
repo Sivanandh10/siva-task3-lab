@@ -1,74 +1,84 @@
-resource "task" "pull_run" {
-  description = "Pull and run your first container"
+resource "task" "init_commit" {
+  description = "Initialise a repo and make your first commit"
 
   config {
     target = resource.container.workstation
   }
 
-  condition "hello_world" {
-    description = "Run the hello-world container"
+  condition "repo_init" {
+    description = "Initialise a Git repo in /root/gitproject"
+    setup {
+      script = "scripts/setup.sh"
+    }
     check {
-      script = "scripts/check_hello.sh"
+      script = "scripts/check_init.sh"
     }
   }
 
-  condition "nginx_running" {
-    description = "Run nginx container on port 8080"
+  condition "first_commit" {
+    description = "Make a commit with the message 'initial commit'"
     check {
-      script = "scripts/check_nginx.sh"
+      script = "scripts/check_commit.sh"
     }
   }
 }
 
-resource "task" "inspect" {
-  description = "Inspect a running container"
+resource "task" "branching" {
+  description = "Create and switch to a new branch"
 
   config {
     target = resource.container.workstation
   }
 
-  condition "inspect_done" {
-    description = "Save nginx container inspect output to /root/docker-workshop/inspect.json"
+  condition "branch_created" {
+    description = "Create a branch named 'feature'"
     check {
-      script = "scripts/check_inspect.sh"
+      script = "scripts/check_branch.sh"
+    }
+  }
+
+  condition "branch_switched" {
+    description = "Switch to the feature branch"
+    check {
+      script = "scripts/check_switched.sh"
     }
   }
 }
 
-resource "task" "volumes" {
-  description = "Use a Docker volume"
+resource "task" "merging" {
+  description = "Merge the feature branch back to main"
 
   config {
     target = resource.container.workstation
   }
 
-  condition "volume_created" {
-    description = "Create a volume named mydata"
+  condition "feature_commit" {
+    description = "Add a commit on the feature branch"
     check {
-      script = "scripts/check_volume.sh"
+      script = "scripts/check_feature_commit.sh"
+    }
+  }
+
+  condition "merged" {
+    description = "Merge feature into main"
+    check {
+      script = "scripts/check_merged.sh"
     }
   }
 }
 
-resource "task" "networking" {
-  description     = "Connect containers on a network"
-  success_message = "Outstanding work. You have completed the Docker Fundamentals workshop."
+resource "task" "conflict" {
+  description     = "Resolve a merge conflict"
+  success_message = "Outstanding. You have completed the Git Fundamentals workshop."
 
   config {
     target = resource.container.workstation
   }
 
-  condition "network_created" {
-    description = "Create a Docker network named labnet"
+  condition "conflict_resolved" {
+    description = "Resolve the conflict and commit the result"
     check {
-      script = "scripts/check_network.sh"
-    }
-  }
-
-  condition "container_connected" {
-    description = "Run a container connected to labnet"
-    check {
-      script = "scripts/check_connected.sh"
+      script = "scripts/check_conflict.sh"
     }
   }
 }

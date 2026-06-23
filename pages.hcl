@@ -1,36 +1,36 @@
 resource "page" "overview" {
-  title = "Welcome to Docker"
+  title = "Welcome to Git"
   file  = "instructions/overview.md"
 }
 
-resource "page" "pull_run" {
-  title = "Pull and Run Containers"
-  file  = "instructions/pull_run.md"
+resource "page" "init_commit" {
+  title = "Init and Commit"
+  file  = "instructions/init_commit.md"
   activities = {
-    pull_run = resource.task.pull_run
+    init_commit = resource.task.init_commit
   }
 }
 
-resource "page" "inspect" {
-  title = "Inspect Containers"
-  file  = "instructions/inspect.md"
+resource "page" "branching" {
+  title = "Branching"
+  file  = "instructions/branching.md"
   activities = {
-    inspect = resource.task.inspect
+    branching = resource.task.branching
   }
 }
 
-resource "page" "volumes" {
-  title = "Docker Volumes"
-  file  = "instructions/volumes.md"
+resource "page" "merging" {
+  title = "Merging"
+  file  = "instructions/merging.md"
   activities = {
-    volumes = resource.task.volumes
+    merging = resource.task.merging
   }
 }
 
-resource "page" "networking" {
-  title = "Docker Networking"
-  file  = "instructions/networking.md"
+resource "page" "conflict" {
+  title = "Resolve Conflicts"
+  file  = "instructions/conflict.md"
   activities = {
-    networking = resource.task.networking
+    conflict = resource.task.conflict
   }
 }

@@ -1,11 +1,11 @@
 resource "terminal" "shell" {
   target = resource.container.workstation
-  shell  = "/bin/sh"
+  shell  = "/bin/bash"
 }
 
 resource "editor" "code" {
-  workspace "docker" {
-    directory = "/root/docker-workshop"
+  workspace "project" {
+    directory = "/root/gitproject"
     target    = resource.container.workstation
   }
 }

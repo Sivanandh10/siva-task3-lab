@@ -1,38 +1,38 @@
 resource "lab" "siva_task3_lab" {
-  title       = "Docker Fundamentals"
-  description = "Learn Docker hands-on - pull images, run containers, inspect, use volumes and networking."
+  title       = "Git Fundamentals"
+  description = "Learn Git hands-on — init, commit, branch, merge, and resolve conflicts."
   layout      = resource.layout.two_column
 
   settings {
     timelimit {
-      duration   = "90m"
+      duration   = "60m"
       show_timer = true
     }
   }
 
   content {
-    chapter "docker_basics" {
-      title = "Docker Basics"
+    chapter "git_basics" {
+      title = "Git Basics"
 
       page "overview" {
         reference = resource.page.overview
       }
-      page "pull_run" {
-        reference = resource.page.pull_run
+      page "init_commit" {
+        reference = resource.page.init_commit
       }
-      page "inspect" {
-        reference = resource.page.inspect
+      page "branching" {
+        reference = resource.page.branching
       }
     }
 
-    chapter "docker_advanced" {
-      title = "Going Further"
+    chapter "git_collaboration" {
+      title = "Collaboration"
 
-      page "volumes" {
-        reference = resource.page.volumes
+      page "merging" {
+        reference = resource.page.merging
       }
-      page "networking" {
-        reference = resource.page.networking
+      page "conflict" {
+        reference = resource.page.conflict
       }
     }
   }

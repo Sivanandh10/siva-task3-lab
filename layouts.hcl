@@ -11,7 +11,7 @@ resource "layout" "two_column" {
       active = true
     }
     tab "editor" {
-      title  = "Workshop Files"
+      title  = "Project Files"
       target = resource.editor.code
     }
   }
