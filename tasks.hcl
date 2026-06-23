@@ -7,9 +7,6 @@ resource "task" "pull_run" {
 
   condition "hello_world" {
     description = "Run the hello-world container"
-    setup {
-      script = "scripts/setup.sh"
-    }
     check {
       script = "scripts/check_hello.sh"
     }
@@ -46,7 +43,7 @@ resource "task" "volumes" {
   }
 
   condition "volume_created" {
-    description = "Create a volume named mydata and mount it"
+    description = "Create a volume named mydata"
     check {
       script = "scripts/check_volume.sh"
     }

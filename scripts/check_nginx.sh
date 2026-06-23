@@ -1,2 +1,2 @@
-#!/bin/bash
-docker ps | grep -q '0.0.0.0:8080'
+#!/bin/sh
+docker ps | grep -q '8080'

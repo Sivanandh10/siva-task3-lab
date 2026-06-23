@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/bin/sh
 docker network ls | grep -q labnet
