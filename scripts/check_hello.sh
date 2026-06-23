@@ -1,2 +1,2 @@
 #!/bin/sh
-DOCKER_HOST=unix:///var/run/docker.sock docker ps -a | grep -q hello-world
+test -f /root/docker-workshop/hello.done
