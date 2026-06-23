@@ -1,2 +1,2 @@
 #!/bin/sh
-docker ps -a | grep -q hello-world
+DOCKER_HOST=unix:///var/run/docker.sock docker ps -a | grep -q hello-world

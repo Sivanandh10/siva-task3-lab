@@ -1,2 +1,2 @@
 #!/bin/sh
-docker volume ls | grep -q mydata
+DOCKER_HOST=unix:///var/run/docker.sock docker volume ls | grep -q mydata

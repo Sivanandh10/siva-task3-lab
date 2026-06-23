@@ -1,2 +1,2 @@
 #!/bin/sh
-docker ps | grep -q nginx
+DOCKER_HOST=unix:///var/run/docker.sock docker ps | grep -q nginx
