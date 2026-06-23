@@ -6,10 +6,10 @@
 
 ## Step 1 - Create the conflict
 
-    git checkout main
-    echo "main version" > README.md
+    git checkout master
+    echo "master version" > README.md
     git add README.md
-    git commit -m "update readme on main"
+    git commit -m "update readme on master"
 
     git checkout feature
     echo "feature version" > README.md
@@ -20,7 +20,7 @@
 
 ## Step 2 - Trigger and resolve
 
-    git checkout main
+    git checkout master
     git merge feature
 
 Git reports a conflict. Resolve it:

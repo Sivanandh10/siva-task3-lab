@@ -1,6 +1,6 @@
 # Merging
 
-> Merge your feature branch back into main.
+> Merge your feature branch back into the default branch.
 
 ---
 
@@ -15,14 +15,16 @@ Make sure you are on feature:
 
 ---
 
-## Step 2 - Merge into main
+## Step 2 - Merge into master
 
-    git checkout main
+    git checkout master
     git merge feature
 
 Verify:
 
     git log --oneline
+
+You should see both commits.
 
 Click **Check**.
 
