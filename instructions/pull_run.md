@@ -8,10 +8,9 @@
 
     docker run hello-world
 
-Confirm it ran then mark it done:
+Mark it done:
 
-    mkdir -p /root/docker-workshop
-    touch /root/docker-workshop/hello.done
+    touch /tmp/hello.done
 
 ---
 
@@ -25,7 +24,7 @@ Verify it is running:
 
 Mark it done:
 
-    touch /root/docker-workshop/nginx.done
+    touch /tmp/nginx.done
 
 ---
 

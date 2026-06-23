@@ -1,2 +1,2 @@
 #!/bin/sh
-test -f /root/docker-workshop/hello.done
+test -f /tmp/hello.done

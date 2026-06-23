@@ -1,2 +1,2 @@
 #!/bin/sh
-test -f /root/docker-workshop/nginx.done
+test -f /tmp/nginx.done
