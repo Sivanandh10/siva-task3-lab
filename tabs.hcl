@@ -1,6 +1,6 @@
 resource "terminal" "shell" {
   target = resource.container.workstation
-  shell  = "/bin/bash"
+  shell  = "/bin/sh"
 }
 
 resource "editor" "code" {
