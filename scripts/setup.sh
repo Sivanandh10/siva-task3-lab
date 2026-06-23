@@ -32,8 +32,10 @@ body{font-family:sans-serif;display:flex;align-items:center;justify-content:cent
 </html>
 HTML
 
-# start nginx (container uses nginx directly, not systemctl)
+# start nginx then reload config
 nginx
+sleep 1
+nginx -s reload
 
 # git history server on 8080
 cat > /root/gitlog.py << 'PYEOF'
@@ -49,7 +51,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 stderr=subprocess.DEVNULL
             ).decode()
             if not log.strip():
-                log = "No commits yet — complete Task 1 first!"
+                log = "No commits yet - complete Task 1 first!"
         except:
             log = "Repository not initialised yet."
         page = f"""<!DOCTYPE html>
