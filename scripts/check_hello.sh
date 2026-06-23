@@ -1,2 +1,2 @@
 #!/bin/sh
-docker ps -a | grep -q hello-world
+docker ps -a --format '{{.Image}}' | grep -q 'hello-world'

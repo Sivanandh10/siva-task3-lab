@@ -1,2 +1,2 @@
 #!/bin/sh
-docker ps | grep -q '8080'
+docker ps --format '{{.Image}}' | grep -q 'nginx'
