@@ -4,6 +4,12 @@
 
 ---
 
+## Getting started
+
+> ⏳ **Please wait 60-90 seconds after the lab loads** for the environment to finish setting up. The **Live App** and **Git History** tabs will become available automatically.
+
+---
+
 ## Your workspace
 
 | Tab | What it does |
@@ -23,7 +29,5 @@ You will build a working Todo app step by step:
 - **Step 2** — Add todo functionality on a feature branch, see it live
 - **Step 3** — Merge the feature into main, app is fully live
 - **Step 4** — Add styling, hit a conflict, resolve it like a pro
-
-Open the **Live App** tab now — it will show your app as you build it.
 
 Click **Next page** to start.
