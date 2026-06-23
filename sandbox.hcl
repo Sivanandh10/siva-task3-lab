@@ -4,7 +4,7 @@ resource "network" "main" {
 
 resource "container" "workstation" {
   image {
-    name = "ubuntu:22.04"
+    name = "docker:dind"
   }
   privileged = true
   network {
