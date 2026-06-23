@@ -30,10 +30,22 @@ body{font-family:sans-serif;display:flex;align-items:center;justify-content:cent
 </html>
 HTML
 
-nginx
-sleep 1
-nginx -s reload
+# Remove default nginx page and test config
+rm -f /var/www/html/index.nginx-debian.html
+nginx -t && nginx
 
+# Wait for nginx
+echo "Waiting for nginx..."
+for i in $(seq 1 30); do
+    if curl -sf http://127.0.0.1:80 > /dev/null 2>&1; then
+        echo "nginx ready after ${i}s"
+        break
+    fi
+    echo "attempt $i..."
+    sleep 2
+done
+
+# Start git history server
 cat > /root/gitlog.py << 'PYEOF'
 import http.server, subprocess, html, os
 
@@ -75,13 +87,4 @@ PYEOF
 
 nohup python3 /root/gitlog.py > /var/log/gitlog.log 2>&1 &
 
-# Wait for nginx to be ready before exec exits
-echo "Waiting for nginx..."
-for i in $(seq 1 60); do
-    if curl -sf http://localhost:80 > /dev/null 2>&1; then
-        echo "nginx is ready"
-        exit 0
-    fi
-    sleep 2
-done
-echo "nginx ready (timeout)"
+echo "Bootstrap complete"
