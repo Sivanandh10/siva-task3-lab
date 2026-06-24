@@ -72,6 +72,13 @@ PYEOF
     exportfs -ra
     systemctl enable nfs-kernel-server
     systemctl start nfs-kernel-server
+        mkdir -p /root/.ssh
+    ssh-keygen -t rsa -N '' -f /root/.ssh/id_rsa 2>/dev/null || true
+    cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
+    chmod 700 /root/.ssh
+    chmod 600 /root/.ssh/authorized_keys
+    systemctl enable ssh
+    systemctl start ssh
     exit 0
   STARTEOF
 }
