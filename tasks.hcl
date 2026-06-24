@@ -7,9 +7,6 @@ resource "task" "init_commit" {
 
   condition "repo_init" {
     description = "Initialise a Git repo in /root/todoapp"
-    setup {
-      script = "scripts/bootstrap.sh"
-    }
     check {
       script = "scripts/check_init.sh"
     }
