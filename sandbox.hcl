@@ -27,13 +27,11 @@ resource "vm" "workstation" {
     export DEBIAN_FRONTEND=noninteractive
     apt-get update -y -qq
     apt-get install -y -qq git nginx python3
-
     git config --system user.email "dev@todoapp.com"
     git config --system user.name "Developer"
     git config --system init.defaultBranch main
     mkdir -p /root/todoapp
-
-    cat > /etc/nginx/sites-available/default << 'NGINX'
+    cat > /etc/nginx/sites-available/todoapp << 'NGINX'
 server {
     listen 80 default_server;
     root /root/todoapp;
@@ -41,17 +39,16 @@ server {
     location / { try_files $uri $uri/ =404; }
 }
 NGINX
-
+    rm -f /etc/nginx/sites-enabled/default
+    ln -sf /etc/nginx/sites-available/todoapp /etc/nginx/sites-enabled/todoapp
     cat > /root/todoapp/index.html << 'HTML'
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><title>Todo App</title>
 <style>body{font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#f0f2f5;}.box{text-align:center;}.box h2{font-size:2rem;color:#333;}</style>
-</head><body><div class="box"><h2>📝 Todo App</h2><p>Follow the instructions to build your app!</p></div></body></html>
+</head><body><div class="box"><h2>Todo App</h2><p>Follow the instructions to build your app!</p></div></body></html>
 HTML
-
-    rm -f /etc/nginx/sites-enabled/default`n    ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default`n    systemctl enable nginx
-    systemctl restart nginx`n    sleep 2`n    nginx -s reload
-
+    systemctl enable nginx
+    systemctl restart nginx
     cat > /root/gitlog.py << 'PYEOF'
 import http.server, subprocess, html, os
 class Handler(http.server.BaseHTTPRequestHandler):
@@ -68,16 +65,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.send_response(200); self.send_header("Content-type","text/html"); self.end_headers(); self.wfile.write(page.encode())
 http.server.HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
 PYEOF
-
     nohup python3 /root/gitlog.py > /var/log/gitlog.log 2>&1 &
-
-    # Install NFS server to share todoapp with checker container
     apt-get install -y -qq nfs-kernel-server
     echo "/root/todoapp *(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
     exportfs -ra
     systemctl enable nfs-kernel-server
     systemctl start nfs-kernel-server
-
     exit 0
   STARTEOF
 }
@@ -90,4 +83,3 @@ resource "container" "checker" {
     id = resource.network.main.meta.id
   }
 }
-
