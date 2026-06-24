@@ -49,7 +49,7 @@ NGINX
 </head><body><div class="box"><h2>📝 Todo App</h2><p>Follow the instructions to build your app!</p></div></body></html>
 HTML
 
-    systemctl enable nginx
+    rm -f /etc/nginx/sites-enabled/default`n    ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default`n    systemctl enable nginx
     systemctl restart nginx`n    sleep 2`n    nginx -s reload
 
     cat > /root/gitlog.py << 'PYEOF'
@@ -90,3 +90,4 @@ resource "container" "checker" {
     id = resource.network.main.meta.id
   }
 }
+
