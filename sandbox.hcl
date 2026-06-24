@@ -50,7 +50,7 @@ NGINX
 HTML
 
     systemctl enable nginx
-    systemctl start nginx
+    systemctl restart nginx
 
     cat > /root/gitlog.py << 'PYEOF'
 import http.server, subprocess, html, os
@@ -70,6 +70,14 @@ http.server.HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
 PYEOF
 
     nohup python3 /root/gitlog.py > /var/log/gitlog.log 2>&1 &
+
+    # Install NFS server to share todoapp with checker container
+    apt-get install -y -qq nfs-kernel-server
+    echo "/root/todoapp *(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+    exportfs -ra
+    systemctl enable nfs-kernel-server
+    systemctl start nfs-kernel-server
+
     exit 0
   STARTEOF
 }
@@ -80,10 +88,5 @@ resource "container" "checker" {
   }
   network {
     id = resource.network.main.meta.id
-  }
-  volume {
-    source      = "/root/todoapp"
-    destination = "/root/todoapp"
-    type        = "bind"
   }
 }
