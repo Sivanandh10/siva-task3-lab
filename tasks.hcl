@@ -2,7 +2,7 @@ resource "task" "init_commit" {
   description = "Initialise the repo and create the app skeleton"
 
   config {
-    target = resource.container.workstation
+    target = resource.container.checker
   }
 
   condition "repo_init" {
@@ -24,7 +24,7 @@ resource "task" "branching" {
   description = "Add todo functionality on a feature branch"
 
   config {
-    target = resource.container.workstation
+    target = resource.container.checker
   }
 
   condition "branch_created" {
@@ -46,7 +46,7 @@ resource "task" "merging" {
   description = "Merge the todo feature into main"
 
   config {
-    target = resource.container.workstation
+    target = resource.container.checker
   }
 
   condition "feature_commit" {
@@ -69,7 +69,7 @@ resource "task" "conflict" {
   success_message = "Outstanding! Your Todo App is complete and deployed with Git!"
 
   config {
-    target = resource.container.workstation
+    target = resource.container.checker
   }
 
   condition "conflict_resolved" {
