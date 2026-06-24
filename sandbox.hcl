@@ -47,7 +47,8 @@ NGINX
 <style>body{font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#f0f2f5;}.box{text-align:center;}.box h2{font-size:2rem;color:#333;}</style>
 </head><body><div class="box"><h2>Todo App</h2><p>Follow the instructions to build your app!</p></div></body></html>
 HTML
-    chmod 755 /root`n    systemctl enable nginx
+    chmod 755 /root
+    systemctl enable nginx
     systemctl restart nginx
     cat > /root/gitlog.py << 'PYEOF'
 import http.server, subprocess, html, os
