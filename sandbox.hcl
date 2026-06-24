@@ -28,9 +28,9 @@ resource "vm" "workstation" {
     apt-get update -y -qq
     apt-get install -y -qq git nginx python3
 
-    git config --global user.email "dev@todoapp.com"
-    git config --global user.name "Developer"
-    git config --global init.defaultBranch main
+    git config --system user.email "dev@todoapp.com"
+    git config --system user.name "Developer"
+    git config --system init.defaultBranch main
     mkdir -p /root/todoapp
 
     cat > /etc/nginx/sites-available/default << 'NGINX'
@@ -50,7 +50,7 @@ NGINX
 HTML
 
     systemctl enable nginx
-    systemctl restart nginx
+    systemctl restart nginx`n    sleep 2`n    nginx -s reload
 
     cat > /root/gitlog.py << 'PYEOF'
 import http.server, subprocess, html, os
